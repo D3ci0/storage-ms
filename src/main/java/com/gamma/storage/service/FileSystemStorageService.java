@@ -39,6 +39,7 @@ public class FileSystemStorageService implements StorageService{
             }
         }catch (IOException e){
             logger.error("Exception while storing the file: ", e);
+            throw new RuntimeException(e);
         }
     }
 
