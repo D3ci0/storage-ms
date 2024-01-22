@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  description: Il seguente documento descrive le API messe a disposizione dal servizio Storage della piattaforma Gamma
+  version: "0.0.1"
+  title: Storage Service
+paths:
+  '/v1/store':
+    post:
+      summary: Store the input files
+      operationId: storeFiles
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: array
+              items:
+                type: string
+                format: binary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/StoreResponseMessage'
+components:
+  schemas:
+    StoreResponseMessage:
+      type: object
+      properties:
+        resultCode:
+          type: string
